@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>史密斯圆图计算</title>
+    <style>
+        canvas {
+            cursor: pointer;
+            float: left;
+            height: 600px;
+            width: 600px;
+        }
+
+        input {
+            width: 60px;
+        }
+
+        #panel {
+            float: left;
+            width: 520px;
+            height: 520px;
+            padding: 40px;
+        }
+
+        #panel div {
+            padding: 10px;
+        }
+
+        #soft {
+            height: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+
+
+    </style>
+    <script src="js/Plural.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+<div id="soft">
+    <canvas id="canvas">
+        您的浏览器不支持canvas，请您更换浏览器再试
+    </canvas>
+    <div id="panel">
+        <div>
+            <label>负载阻抗<input type="number" step="0.01" id="impedanceR" class="real" value="25">+j
+                <input class="image" id="impedanceI" type="number" step="0.01" value="75"></label>
+            <label> 特性阻抗 <input class="image" id="characteristicImpedance" type="number" step="0.01" value="50"></label>
+            <a href="##" onclick="javascript:calCharacteristicImpedance()">归一化</a>
+            <a href="##" onclick="javascript:addChartByTable()">画图</a>
+        </div>
+        <div>
+            <label>归一化阻抗<input type="number" step="0.01" id="normalizedImpedanceR" class="real">+j
+                <input class="image" id="normalizedImpedanceI" type="number" step="0.01"></label>
+            <label>阻抗对应电长度：<span id="dianchangdu1"></span></label>
+        </div>
+        <div> 与阻抗所对应导纳值： <span id="daoNaValue"></span></div>
+        <div> 导纳电长度：<span id="dianchangdu2"></span></div>
+        <div> 反射系数：<span id="reflectionValue"></span></div>
+        <div> 电压驻波比：<span id="VSWR"></span></div>
+        <div> 行波系数：<span id="travelingWaveCoefficient"></span></div>
+        <div> 波节点判断：<span id="WaveNode"></span></div>
+        <div style="display: none"> 电长度对应角度：<span id="dianchangdujiaodu"></span></div>
+        <div>
+            <label><input type="radio" name="dianchangdu" value="1" checked>面向电源</label>
+            <label><input type="radio" name="dianchangdu" value="0">面向负载</label>
+            <label><input type="checkbox" id="check">单支节匹配</label>
+        </div>
+        <div> 短截线位置：<span id="matchPosition"></span></div>
+        <div> 短截线长度：<span id="matchLength"></span></div>
+    </div>
+</div>
+</body>
+</html>
